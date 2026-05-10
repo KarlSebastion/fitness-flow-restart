@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Train with Louise | Online Fitness Coach</title>
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@600;700;800;900&family=Open+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root {
+      --teal-dark: #1a6b8a;
+      --teal-mid: #2a9d8f;
+      --terracotta: #e76f51;
+      --terracotta-dark: #cf5c3e;
+      --gold: #e9c46a;
+      --gold-bright: #f4d35e;
+      --sand: #fdf8f2;
+      --sand-warm: #faf3e8;
+      --navy: #1a3a4a;
+      --text-body: #5a6a72;
+      --white: #ffffff;
+    }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Open Sans', sans-serif; background: var(--sand); color: var(--navy); line-height: 1.7; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,248,242,0.94); backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(26,107,138,0.1);
+      padding: 1rem 2rem; display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-brand { font-family: 'Raleway', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--teal-dark); text-decoration: none; }
+    .nav-brand span { color: var(--terracotta); }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a { font-size: 0.85rem; font-weight: 400; color: var(--text-body); text-decoration: none; transition: color 0.2s; }
+    .nav-links a:hover { color: var(--teal-dark); }
+    .nav-cta { background: var(--terracotta); color: var(--white); padding: 0.6rem 1.5rem; border-radius: 40px; font-size: 0.85rem; font-weight: 600; font-family: 'Raleway', sans-serif; text-decoration: none; transition: background 0.2s; }
+    .nav-cta:hover { background: var(--terracotta-dark); }
+    @media (max-width: 680px) { .nav-links { display: none; } }
+
+    /* HERO */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(140deg, var(--teal-dark) 0%, var(--teal-mid) 45%, #4dbfa8 70%, var(--gold) 100%);
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 9rem 2rem 5rem; position: relative; overflow: hidden;
+    }
+    .hero-blob-1 { position: absolute; bottom: -80px; right: -80px; width: 450px; height: 450px; background: radial-gradient(circle, rgba(231,111,81,0.35) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+    .hero-blob-2 { position: absolute; top: 80px; left: 40%; width: 280px; height: 280px; background: radial-gradient(circle, rgba(244,211,94,0.28) 0%, transparent 65%); border-radius: 50%; pointer-events: none; }
+    .hero-inner { max-width: 700px; margin: 0 auto; position: relative; z-index: 1; }
+    .hero-eyebrow { display: inline-block; font-family: 'Open Sans', sans-serif; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.88); margin-bottom: 1.5rem; font-weight: 400; background: rgba(255,255,255,0.15); padding: 6px 18px; border-radius: 40px; }
+    .hero-title { font-family: 'Raleway', sans-serif; font-size: clamp(3rem, 9vw, 6rem); line-height: 1.0; color: var(--white); margin-bottom: 1rem; font-weight: 900; letter-spacing: -0.02em; }
+    .hero-title .accent { color: var(--gold-bright); display: block; }
+    .hero-intro { font-size: 1.05rem; font-weight: 300; color: rgba(255,255,255,0.92); max-width: 540px; line-height: 1.85; margin-bottom: 2.75rem; }
+    .hero-ctas { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary { background: var(--terracotta); color: var(--white); padding: 1rem 2.4rem; border: none; border-radius: 40px; font-family: 'Raleway', sans-serif; font-size: 0.95rem; font-weight: 700; cursor: pointer; letter-spacing: 0.03em; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+    .btn-primary:hover { background: var(--terracotta-dark); transform: translateY(-2px); }
+    .btn-ghost { background: rgba(255,255,255,0.15); color: var(--white); padding: 1rem 2.4rem; border: 1.5px solid rgba(255,255,255,0.55); border-radius: 40px; font-family: 'Raleway', sans-serif; font-size: 0.95rem; font-weight: 600; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+    .btn-ghost:hover { background: rgba(255,255,255,0.28); }
+    .hero-scroll { margin-top: 4rem; display: flex; align-items: center; gap: 0.75rem; color: rgba(255,255,255,0.55); font-size: 0.78rem; font-weight: 300; letter-spacing: 0.1em; text-transform: uppercase; }
+    .hero-scroll-line { width: 36px; height: 1px; background: rgba(255,255,255,0.35); }
+
+    /* WAVE */
+    .wave-divider { display: block; width: 100%; line-height: 0; }
+
+    /* SECTIONS */
+    .section { padding: 6rem 2rem; }
+    .section-inner { max-width: 860px; margin: 0 auto; }
+    .section-label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--terracotta); margin-bottom: 1rem; font-weight: 600; font-family: 'Open Sans', sans-serif; }
+    .section-title { font-family: 'Raleway', sans-serif; font-size: clamp(2rem, 5vw, 2.8rem); line-height: 1.15; color: var(--navy); margin-bottom: 1.25rem; font-weight: 800; letter-spacing: -0.02em; }
+    .section-body { font-size: 1rem; font-weight: 300; color: var(--text-body); line-height: 1.9; max-width: 620px; }
+
+    /* INTRO */
+    .intro-section { background: var(--white); padding: 6rem 2rem; }
+    .intro-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 860px; margin: 0 auto; }
+    @media (max-width: 680px) { .intro-grid { grid-template-columns: 1fr; gap: 2rem; } }
+    .intro-text h2 { font-family: 'Raleway', sans-serif; font-size: clamp(1.8rem, 4vw, 2.4rem); font-weight: 800; color: var(--navy); line-height: 1.2; margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+    .intro-text h2 span { color: var(--teal-mid); }
+    .intro-text p { font-size: 0.975rem; font-weight: 300; color: var(--text-body); line-height: 1.9; margin-bottom: 1rem; }
+    .intro-visual { background: linear-gradient(145deg, var(--teal-mid), var(--teal-dark)); border-radius: 24px; padding: 2.5rem 2rem; color: var(--white); }
+    .intro-visual .big-num { font-family: 'Raleway', sans-serif; font-size: 5rem; font-weight: 900; color: var(--gold-bright); line-height: 1; display: block; margin-bottom: 0.25rem; text-align: center; }
+    .intro-visual .big-label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--gold-bright); font-weight: 600; text-align: center; display: block; margin-bottom: 1.5rem; }
+    .support-list { list-style: none; }
+    .support-list li { font-size: 0.875rem; color: rgba(255,255,255,0.85); padding: 0.6rem 0; border-bottom: 1px solid rgba(255,255,255,0.1); display: flex; gap: 0.6rem; align-items: flex-start; font-weight: 300; }
+    .support-list li:last-child { border-bottom: none; }
+    .support-list li span { color: var(--gold-bright); flex-shrink: 0; }
+
+    /* NO GYM */
+    .no-gym { background: var(--teal-dark); padding: 4rem 2rem; text-align: center; }
+    .no-gym-inner { max-width: 700px; margin: 0 auto; }
+    .no-gym .label { font-size: 10px; letter-spacing: 0.28em; text-transform: uppercase; color: var(--gold-bright); margin-bottom: 1rem; font-weight: 600; }
+    .no-gym h2 { font-family: 'Raleway', sans-serif; font-size: clamp(1.8rem, 4vw, 2.6rem); font-weight: 800; color: var(--white); margin-bottom: 1.25rem; letter-spacing: -0.02em; }
+    .no-gym p { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.85); line-height: 1.9; margin-bottom: 1.25rem; }
+    .no-gym .tagline { font-size: 0.95rem; font-weight: 500; color: var(--gold-bright); }
+
+    /* SERVICES */
+    .services-section { background: linear-gradient(180deg, var(--sand) 0%, #ddeef2 100%); padding: 6rem 2rem; }
+    .services-inner { max-width: 860px; margin: 0 auto; }
+    .service-block { background: var(--white); border-radius: 24px; padding: 3rem 2.5rem; margin-bottom: 2rem; border: 1px solid rgba(26,107,138,0.1); position: relative; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; }
+    .service-block:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(26,107,138,0.12); }
+    .service-block.featured { background: linear-gradient(150deg, var(--teal-dark) 0%, var(--teal-mid) 100%); border-color: transparent; }
+    .service-header { display: flex; align-items: flex-start; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-bottom: 1rem; }
+    .service-tag { font-size: 9px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; padding: 5px 14px; border-radius: 20px; background: var(--gold-bright); color: var(--navy); font-family: 'Open Sans', sans-serif; }
+    .service-block:not(.featured) .service-tag { background: rgba(42,157,143,0.12); color: var(--teal-dark); }
+    .service-title { font-family: 'Raleway', sans-serif; font-size: 1.8rem; font-weight: 800; color: var(--navy); margin-bottom: 0.4rem; letter-spacing: -0.02em; }
+    .service-block.featured .service-title { color: var(--white); }
+    .service-subtitle { font-size: 0.8rem; color: var(--teal-mid); letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.25rem; font-weight: 600; }
+    .service-block.featured .service-subtitle { color: var(--gold-bright); }
+    .service-intro { font-size: 1rem; color: var(--text-body); line-height: 1.85; font-weight: 300; margin-bottom: 2rem; max-width: 600px; }
+    .service-block.featured .service-intro { color: rgba(255,255,255,0.85); }
+    .service-list { list-style: none; margin-bottom: 2rem; }
+    .service-list li { font-size: 0.95rem; color: #5a6a72; padding: 0.7rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); display: flex; align-items: flex-start; gap: 0.85rem; font-weight: 300; line-height: 1.6; }
+    .service-block.featured .service-list li { color: rgba(255,255,255,0.85); border-bottom-color: rgba(255,255,255,0.1); }
+    .service-list li .check { width: 20px; height: 20px; border-radius: 50%; background: rgba(42,157,143,0.15); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 1px; font-size: 0.65rem; color: var(--teal-mid); }
+    .service-block.featured .service-list li .check { background: rgba(244,211,94,0.25); color: var(--gold-bright); }
+    .service-footer { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; margin-top: 1rem; }
+    .btn-service { background: var(--terracotta); color: var(--white); padding: 0.9rem 2.2rem; border: none; border-radius: 40px; font-family: 'Raleway', sans-serif; font-size: 0.9rem; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s; text-decoration: none; display: inline-block; }
+    .btn-service:hover { background: var(--terracotta-dark); transform: translateY(-1px); }
+    .btn-service-outline { background: rgba(255,255,255,0.15); color: var(--white); padding: 0.9rem 2.2rem; border: 1.5px solid rgba(255,255,255,0.5); border-radius: 40px; font-family: 'Raleway', sans-serif; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: background 0.2s; text-decoration: none; display: inline-block; }
+    .btn-service-outline:hover { background: rgba(255,255,255,0.28); }
+
+    /* ORANGE STRIP */
+    .location-strip { background: var(--terracotta); padding: 2.5rem 2rem; text-align: center; }
+    .location-strip p { font-size: 0.95rem; color: rgba(255,255,255,0.93); font-weight: 300; line-height: 1.75; max-width: 640px; margin: 0 auto; }
+    .location-strip strong { color: var(--white); font-weight: 600; }
+    .location-strip a { color: var(--white); font-weight: 600; }
+
+    /* WELLBEING */
+    .wellbeing-section { background: var(--sand-warm); padding: 6rem 2rem; }
+    .wellbeing-inner { max-width: 860px; margin: 0 auto; }
+    .wellbeing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+    .wellbeing-card { background: var(--white); border-radius: 20px; padding: 2rem 1.75rem; border: 1px solid rgba(26,107,138,0.08); transition: transform 0.25s, box-shadow 0.25s; }
+    .wellbeing-card:hover { transform: translateY(-4px); box-shadow: 0 12px 30px rgba(26,107,138,0.1); }
+    .wellbeing-icon { font-size: 2.2rem; margin-bottom: 1rem; }
+    .wellbeing-card h3 { font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 700; color: var(--navy); margin-bottom: 0.5rem; }
+    .wellbeing-card p { font-size: 0.875rem; color: #8a9aa2; line-height: 1.7; font-weight: 300; }
+
+    /* REVIEWS */
+    .reviews-section { background: var(--white); padding: 6rem 2rem; }
+    .testimonials-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+    .testimonial { background: var(--sand); border-radius: 16px; padding: 1.75rem; border: 1px solid rgba(26,107,138,0.08); }
+    .testimonial p { font-size: 0.95rem; color: var(--text-body); font-weight: 300; line-height: 1.7; font-style: italic; }
+    .stars { color: var(--gold); font-size: 1.4rem; letter-spacing: 4px; margin-top: 1.25rem; }
+    .reviews-link { display: inline-flex; align-items: center; gap: 0.5rem; color: var(--teal-dark); font-size: 0.95rem; text-decoration: none; font-weight: 500; border-bottom: 1px solid rgba(26,107,138,0.25); padding-bottom: 3px; margin-top: 1.5rem; transition: color 0.2s; }
+    .reviews-link:hover { color: var(--teal-mid); }
+
+    /* CTA */
+    .cta-section { background: linear-gradient(140deg, var(--teal-mid) 0%, var(--teal-dark) 100%); padding: 7rem 2rem; text-align: center; }
+    .cta-section .section-label { color: var(--gold-bright); }
+    .cta-section .section-title { color: var(--white); max-width: 520px; margin: 0 auto 1rem; }
+    .cta-body { font-size: 1rem; font-weight: 300; color: rgba(255,255,255,0.85); max-width: 520px; margin: 0 auto 2.5rem; line-height: 1.85; }
+    .contact-form { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: left; max-width: 560px; margin: 0 auto; }
+    .form-group { margin-bottom: 1.25rem; }
+    .form-group label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; letter-spacing: 0.06em; text-transform: uppercase; }
+    .form-group input { width: 100%; padding: 0.9rem 1.25rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.12); color: var(--white); font-family: 'Open Sans', sans-serif; font-size: 0.95rem; outline: none; }
+    .form-group input::placeholder { color: rgba(255,255,255,0.45); }
+    .btn-submit { width: 100%; background: var(--terracotta); color: var(--white); padding: 1.1rem; border: none; border-radius: 40px; font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 0.75rem; transition: background 0.2s; }
+    .btn-submit:hover { background: var(--terracotta-dark); }
+    .whatsapp-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.12); color: var(--white); padding: 0.8rem 1.75rem; border-radius: 40px; text-decoration: none; font-size: 0.9rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.25); margin-top: 1.5rem; transition: background 0.2s; }
+    .whatsapp-btn:hover { background: rgba(255,255,255,0.22); }
+    .fb-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 1.25rem; font-weight: 300; }
+
+    /* FOOTER */
+    footer { background: var(--navy); padding: 2.5rem 2rem; text-align: center; }
+    footer p { font-size: 0.8rem; color: rgba(255,255,255,0.4); font-weight: 300; }
+    footer span { color: var(--gold); }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#home" class="nav-brand">Fitness Flow · <span>Train with Louise</span></a>
+    <ul class="nav-links">
+      <li><a href="#services">Services</a></li>
+      <li><a href="#wellbeing">The Cyprus Life</a></li>
+      <li><a href="#reviews">Reviews</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <a href="#contact" class="nav-cta">Book Now</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="hero-blob-1"></div>
+    <div class="hero-blob-2"></div>
+    <div class="hero-inner">
+      <span class="hero-eyebrow">Online Fitness Coach · Cyprus &amp; Worldwide</span>
+      <h1 class="hero-title">
+        Your Reset<br>
+        <span class="accent">Starts Here.</span>
+      </h1>
+      <p class="hero-intro">
+        Hi, I'm Louise, an online fitness coach with a holistic approach helping expats and digital nomads in the Mediterranean and Cyprus build real health, energy, and strength — online and in person. Let's have a conversation. Book your free consultation today.
+      </p>
+      <div class="hero-ctas">
+        <a href="#contact" class="btn-primary">Get Your Free Consultation</a>
+        <a href="#services" class="btn-ghost">See What's Included</a>
+      </div>
+      <div class="hero-scroll">
+        <div class="hero-scroll-line"></div>
+        Scroll to explore
+      </div>
+    </div>
+  </section>
+
+  <!-- WAVE -->
+  <svg class="wave-divider" viewBox="0 0 1440 60" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none" style="background:var(--white);">
+    <path d="M0,0 C360,60 1080,0 1440,40 L1440,0 Z" fill="url(#heroGrad)"/>
+    <defs>
+      <linearGradient id="heroGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#1a6b8a"/>
+        <stop offset="50%" stop-color="#2a9d8f"/>
+        <stop offset="100%" stop-color="#e9c46a"/>
+      </linearGradient>
+    </defs>
+  </svg>
+
+  <!-- INTRO / ABOUT -->
+  <section class="intro-section">
+    <div class="intro-grid">
+      <div class="intro-text">
+        <h2>You've built the lifestyle.<br><span>Is your wellness keeping up?</span></h2>
+        <p>
+          Living in Cyprus can feel amazing — but without structure, it's easy for fitness, health, and wellbeing to drift into the background while balancing work, travel, and everyday life.
+        </p>
+        <p>
+          That's where I come in. I'm a UK-based online fitness coach working seasonally in Cyprus, helping expats and digital nomads build sustainable routines that create more energy, focus, strength, and balance — without extreme plans or unrealistic lifestyles.
+        </p>
+        <p>
+          Whether we work together online or in person, I offer practical coaching designed to fit around your schedule and help you feel healthier, stronger, and more grounded.
+        </p>
+      </div>
+      <div class="intro-visual">
+        <span class="big-num">365</span>
+        <span class="big-label">Days of Support</span>
+        <ul class="support-list">
+          <li><span>✓</span> Weekly one-on-one check-ins to keep you on track</li>
+          <li><span>✓</span> Personalised nutrition coaching</li>
+          <li><span>✓</span> WhatsApp support throughout your journey</li>
+          <li><span>✓</span> Access to exclusive premium content and resources</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- NO GYM -->
+  <section class="no-gym">
+    <div class="no-gym-inner">
+      <p class="label">No Gym? No Problem.</p>
+      <h2>Forget the gym.<br>Train in Cyprus.</h2>
+      <p>
+        Gyms aren't on every corner here — and honestly? You don't need one. Train on the beach at sunrise. Use your apartment balcony. Work out in the hills with views for miles. No commute. No fluorescent lights. Just you, the Mediterranean, and a programme designed to work with your environment.
+      </p>
+      <p class="tagline">You've got the adventure. Let's get the strength. 🌊</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section" id="services">
+    <div class="services-inner">
+      <p class="section-label">What's included</p>
+      <h2 class="section-title">Your Weekly Reset</h2>
+      <p class="section-body">
+        I offer bespoke packages and programmes, whether online or in person. I will help you build solid routines and lock in healthy habits to stay strong, feel energised, and really enjoy the long-term benefits of your lifestyle.
+      </p>
+
+      <!-- FREE CONSULTATION -->
+      <div class="service-block" style="margin-top:3rem;">
+        <div class="service-header">
+          <div>
+            <h3 class="service-title">Free Consultation</h3>
+            <p class="service-subtitle">No Charge · No Pressure</p>
+          </div>
+          <span class="service-tag">Start Here</span>
+        </div>
+        <p class="service-intro">
+          Every journey starts with a conversation. Your free consultation is a relaxed, no-pressure chat about where you are right now, where you want to get to, and how we're going to get there together. No commitment required — just a genuine conversation about you and your goals.
+        </p>
+        <ul class="service-list">
+          <li><span class="check">✓</span> A one-to-one conversation — online or via WhatsApp</li>
+          <li><span class="check">✓</span> Talk through your goals, lifestyle, and current fitness level</li>
+          <li><span class="check">✓</span> Get a clear picture of what working together would look like</li>
+          <li><span class="check">✓</span> Ask me anything — completely open and honest</li>
+          <li><span class="check">✓</span> Zero obligation — but you might just leave ready to start</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#contact" class="btn-service">Book Your Consultation</a>
+        </div>
+      </div>
+
+      <!-- ONLINE MONTHLY COACHING -->
+      <div class="service-block featured" style="margin-top:2rem;">
+        <div class="service-header">
+          <div>
+            <h3 class="service-title">Online Monthly Coaching</h3>
+            <p class="service-subtitle">4 Sessions Per Month · Online</p>
+          </div>
+          <span class="service-tag">Most Popular</span>
+        </div>
+        <p class="service-intro">
+          One session a week, plus a fully bespoke programme to work on in between. This is the package for anyone who is time-poor, has hit a plateau, or simply wants to improve fast and stay accountable. Between my visits to Cyprus, I'm with you every step of the way — online and on WhatsApp, updating your programme and keeping you on track.
+        </p>
+        <ul class="service-list">
+          <li><span class="check">✓</span> 4 personal training sessions per month — one per week</li>
+          <li><span class="check">✓</span> A fully bespoke programme, updated regularly</li>
+          <li><span class="check">✓</span> Continual nutrition guidance and advice built around your lifestyle and local Cyprus produce</li>
+          <li><span class="check">✓</span> Weekly check-ins and progress tracking to keep you moving forward</li>
+          <li><span class="check">✓</span> Direct WhatsApp support between sessions — I'm always in your corner</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#contact" class="btn-service-outline">Get Started</a>
+        </div>
+      </div>
+
+      <!-- IN-PERSON SESSIONS -->
+      <div class="service-block" style="margin-top:2rem;">
+        <div class="service-header">
+          <div>
+            <h3 class="service-title">In-Person Sessions</h3>
+            <p class="service-subtitle">Optional Add-On · Cyprus Only</p>
+          </div>
+          <span class="service-tag">Cyprus</span>
+        </div>
+        <p class="service-intro">
+          When I'm in Cyprus, I offer a dedicated in-person coaching session designed to take your progress to the next level. We'll start with a focused 30-minute review of your current progress, refining your programme and adjusting your nutrition plan to fit your evolving goals. Then, we'll spend 90 minutes in a personalised, hands-on coaching session — introducing new exercises, fine-tuning your form, and addressing any challenges. This is more than just a session — it's a strategic step in your coaching journey, available to all monthly clients during my visits.
+        </p>
+        <ul class="service-list">
+          <li><span class="check">✓</span> 30-minute progress review and programme refinement</li>
+          <li><span class="check">✓</span> Nutrition plan adjustment to fit your evolving goals</li>
+          <li><span class="check">✓</span> 90-minute hands-on coaching session</li>
+          <li><span class="check">✓</span> New exercises, form correction, and challenge troubleshooting</li>
+          <li><span class="check">✓</span> Book in advance — my Cyprus calendar fills up fast. Early booking is recommended to secure your slot before my seasonal visits begin.</li>
+        </ul>
+        <div class="service-footer">
+          <a href="#contact" class="btn-service">Check Availability</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ORANGE STRIP -->
+  <div class="location-strip">
+    <p>I will support you online and via WhatsApp throughout your entire journey, offering you ongoing advice and guidance to keep you accountable and ensure that you stay on track. My calendar is open now and spaces fill fast — <strong><a href="#contact">please get in touch to book your free consultation.</a></strong></p>
+  </div>
+
+  <!-- WELLBEING -->
+  <section class="wellbeing-section" id="wellbeing">
+    <div class="wellbeing-inner">
+      <p class="section-label">The Cyprus Life</p>
+      <h2 class="section-title">Balance your work.<br>Strengthen your lifestyle.</h2>
+      <p class="section-body">
+        Cyprus offers something extraordinary — sun-soaked mornings, clean Mediterranean air, fresh local produce, and a pace of life that naturally supports recovery and wellbeing. Your environment is one of the most powerful tools you have. Let's use it.
+      </p>
+      <div class="wellbeing-grid">
+        <div class="wellbeing-card">
+          <div class="wellbeing-icon">☀️</div>
+          <h3>Outdoor Movement</h3>
+          <p>Move your body in ways that feel natural — train outdoors, walk the coastline, and build fitness into your lifestyle.</p>
+        </div>
+        <div class="wellbeing-card">
+          <div class="wellbeing-icon">🌿</div>
+          <h3>Mediterranean Lifestyle Guidance</h3>
+          <p>As part of your coaching, I'll help guide your food choices and daily habits using fresh local produce, simple meals, and practical nutrition advice that supports your training, energy, and overall wellbeing.</p>
+        </div>
+        <div class="wellbeing-card">
+          <div class="wellbeing-icon">🌊</div>
+          <h3>Rest &amp; Recovery</h3>
+          <p>When you work online, it's easy to stay switched on constantly. Learning how to slow down, recover properly, and make use of your environment is part of building long-term wellbeing.</p>
+        </div>
+        <div class="wellbeing-card">
+          <div class="wellbeing-icon">🧘</div>
+          <h3>Whole-Life Wellbeing</h3>
+          <p>Your fitness, sleep, stress, energy, and daily habits all work together. My coaching is designed to support the bigger picture.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- REVIEWS -->
+  <section class="reviews-section" id="reviews">
+    <div class="section-inner">
+      <p class="section-label">Client Experiences</p>
+      <h2 class="section-title">Real Coaching<br>Experiences.</h2>
+      <p class="section-body">
+        Over the years, I've worked with clients from different backgrounds and lifestyles — helping them build healthier routines, improve their fitness, increase their energy, and create a more balanced approach to wellbeing.
+      </p>
+      <div class="testimonials-grid">
+        <div class="testimonial">
+          <p>"Louise represents the PT gold standard — patient, understanding, and genuinely committed to your success."</p>
+        </div>
+        <div class="testimonial">
+          <p>"In three years, not one session has ever been the same. Creative, motivating, and always prepared."</p>
+        </div>
+        <div class="testimonial">
+          <p>"Louise adapts every session to your needs — no fixed programmes, no 'work through the pain'. Just smart, safe coaching."</p>
+        </div>
+        <div class="testimonial">
+          <p>"A truly human approach to training — the key to building long-term, sustainable success."</p>
+        </div>
+      </div>
+      <div class="stars">★★★★★</div>
+      <br>
+      <a class="reviews-link" href="https://share.google/hKEgtSAOWDtOLHCJF" target="_blank">Read verified Google Reviews &rarr;</a>
+    </div>
+  </section>
+
+  <!-- CTA / CONTACT -->
+  <section class="cta-section" id="contact">
+    <div style="max-width:620px; margin:0 auto;">
+      <p class="section-label">Ready for your reset?</p>
+      <h2 class="section-title">Book Your Free<br>Consultation.</h2>
+      <p class="cta-body">
+        Fill in your details below and I'll be in touch to arrange your free consultation — a relaxed, no-pressure chat about your goals and how we can work together.
+      </p>
+      <div class="contact-form">
+        <div class="form-group">
+          <label>Your Name</label>
+          <input type="text" placeholder="First and last name">
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label>WhatsApp / Telephone Number</label>
+          <input type="tel" placeholder="+44 or international number">
+        </div>
+        <button class="btn-submit">Book Your Free Consultation</button>
+      </div>
+      <div style="text-align:center; margin-top:1.5rem;">
+        <a href="[YOUR WHATSAPP LINK]" target="_blank" class="whatsapp-btn">
+          💬 Message me on WhatsApp
+        </a>
+      </div>
+      <p class="fb-note">Drop me a message through my WhatsApp and I will get back to you within 24 hours. Louise is also active in several expat and solo traveller groups on Facebook — find her there or send a direct message anytime.</p>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>© 2025 <span>Fitness Flow · Train with Louise</span>. All rights reserved.</p>
+  </footer>
+
+</body>
+</html>
