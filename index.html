@@ -153,10 +153,15 @@
     .contact-form { background: rgba(255,255,255,0.1); border-radius: 20px; padding: 2.5rem; text-align: left; max-width: 560px; margin: 0 auto; }
     .form-group { margin-bottom: 1.25rem; }
     .form-group label { display: block; font-size: 0.78rem; color: rgba(255,255,255,0.7); margin-bottom: 0.5rem; letter-spacing: 0.06em; text-transform: uppercase; }
-    .form-group input { width: 100%; padding: 0.9rem 1.25rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.12); color: var(--white); font-family: 'Open Sans', sans-serif; font-size: 0.95rem; outline: none; }
+    .form-group input { width: 100%; padding: 0.9rem 1.25rem; border-radius: 10px; border: 1px solid rgba(255,255,255,0.2); background: rgba(255,255,255,0.12); color: var(--white); font-family: 'Open Sans', sans-serif; font-size: 0.95rem; outline: none; transition: border-color 0.2s; }
     .form-group input::placeholder { color: rgba(255,255,255,0.45); }
+    .form-group input:focus { border-color: rgba(255,255,255,0.5); }
     .btn-submit { width: 100%; background: var(--terracotta); color: var(--white); padding: 1.1rem; border: none; border-radius: 40px; font-family: 'Raleway', sans-serif; font-size: 1rem; font-weight: 700; cursor: pointer; margin-top: 0.75rem; transition: background 0.2s; }
     .btn-submit:hover { background: var(--terracotta-dark); }
+    .btn-submit:disabled { opacity: 0.6; cursor: not-allowed; }
+    .form-message { text-align: center; margin-top: 1.25rem; font-size: 0.95rem; font-weight: 500; min-height: 1.5rem; }
+    .form-message.success { color: var(--gold-bright); }
+    .form-message.error { color: #ffb3a0; }
     .whatsapp-btn { display: inline-flex; align-items: center; gap: 0.6rem; background: rgba(255,255,255,0.12); color: var(--white); padding: 0.8rem 1.75rem; border-radius: 40px; text-decoration: none; font-size: 0.9rem; font-weight: 500; border: 1px solid rgba(255,255,255,0.25); margin-top: 1.5rem; transition: background 0.2s; }
     .whatsapp-btn:hover { background: rgba(255,255,255,0.22); }
     .fb-note { font-size: 0.8rem; color: rgba(255,255,255,0.5); margin-top: 1.25rem; font-weight: 300; }
@@ -222,15 +227,9 @@
     <div class="intro-grid">
       <div class="intro-text">
         <h2>You've built the lifestyle.<br><span>Is your wellness keeping up?</span></h2>
-        <p>
-          Living in Cyprus can feel amazing — but without structure, it's easy for fitness, health, and wellbeing to drift into the background while balancing work, travel, and everyday life.
-        </p>
-        <p>
-          That's where I come in. I'm a UK-based online fitness coach working seasonally in Cyprus, helping expats and digital nomads build sustainable routines that create more energy, focus, strength, and balance — without extreme plans or unrealistic lifestyles.
-        </p>
-        <p>
-          Whether we work together online or in person, I offer practical coaching designed to fit around your schedule and help you feel healthier, stronger, and more grounded.
-        </p>
+        <p>Living in Cyprus can feel amazing — but without structure, it's easy for fitness, health, and wellbeing to drift into the background while balancing work, travel, and everyday life.</p>
+        <p>That's where I come in. I'm a UK-based online fitness coach working seasonally in Cyprus, helping expats and digital nomads build sustainable routines that create more energy, focus, strength, and balance — without extreme plans or unrealistic lifestyles.</p>
+        <p>Whether we work together online or in person, I offer practical coaching designed to fit around your schedule and help you feel healthier, stronger, and more grounded.</p>
       </div>
       <div class="intro-visual">
         <span class="big-num">365</span>
@@ -250,9 +249,7 @@
     <div class="no-gym-inner">
       <p class="label">No Gym? No Problem.</p>
       <h2>Forget the gym.<br>Train in Cyprus.</h2>
-      <p>
-        Gyms aren't on every corner here — and honestly? You don't need one. Train on the beach at sunrise. Use your apartment balcony. Work out in the hills with views for miles. No commute. No fluorescent lights. Just you, the Mediterranean, and a programme designed to work with your environment.
-      </p>
+      <p>Gyms aren't on every corner here — and honestly? You don't need one. Train on the beach at sunrise. Use your apartment balcony. Work out in the hills with views for miles. No commute. No fluorescent lights. Just you, the Mediterranean, and a programme designed to work with your environment.</p>
       <p class="tagline">You've got the adventure. Let's get the strength. 🌊</p>
     </div>
   </section>
@@ -262,11 +259,8 @@
     <div class="services-inner">
       <p class="section-label">What's included</p>
       <h2 class="section-title">Your Weekly Reset</h2>
-      <p class="section-body">
-        I offer bespoke packages and programmes, whether online or in person. I will help you build solid routines and lock in healthy habits to stay strong, feel energised, and really enjoy the long-term benefits of your lifestyle.
-      </p>
+      <p class="section-body">I offer bespoke packages and programmes, whether online or in person. I will help you build solid routines and lock in healthy habits to stay strong, feel energised, and really enjoy the long-term benefits of your lifestyle.</p>
 
-      <!-- FREE CONSULTATION -->
       <div class="service-block" style="margin-top:3rem;">
         <div class="service-header">
           <div>
@@ -275,9 +269,7 @@
           </div>
           <span class="service-tag">Start Here</span>
         </div>
-        <p class="service-intro">
-          Every journey starts with a conversation. Your free consultation is a relaxed, no-pressure chat about where you are right now, where you want to get to, and how we're going to get there together. No commitment required — just a genuine conversation about you and your goals.
-        </p>
+        <p class="service-intro">Every journey starts with a conversation. Your free consultation is a relaxed, no-pressure chat about where you are right now, where you want to get to, and how we're going to get there together. No commitment required — just a genuine conversation about you and your goals.</p>
         <ul class="service-list">
           <li><span class="check">✓</span> A one-to-one conversation — online or via WhatsApp</li>
           <li><span class="check">✓</span> Talk through your goals, lifestyle, and current fitness level</li>
@@ -290,7 +282,6 @@
         </div>
       </div>
 
-      <!-- ONLINE MONTHLY COACHING -->
       <div class="service-block featured" style="margin-top:2rem;">
         <div class="service-header">
           <div>
@@ -299,9 +290,7 @@
           </div>
           <span class="service-tag">Most Popular</span>
         </div>
-        <p class="service-intro">
-          One session a week, plus a fully bespoke programme to work on in between. This is the package for anyone who is time-poor, has hit a plateau, or simply wants to improve fast and stay accountable. Between my visits to Cyprus, I'm with you every step of the way — online and on WhatsApp, updating your programme and keeping you on track.
-        </p>
+        <p class="service-intro">One session a week, plus a fully bespoke programme to work on in between. This is the package for anyone who is time-poor, has hit a plateau, or simply wants to improve fast and stay accountable. Between my visits to Cyprus, I'm with you every step of the way — online and on WhatsApp, updating your programme and keeping you on track.</p>
         <ul class="service-list">
           <li><span class="check">✓</span> 4 personal training sessions per month — one per week</li>
           <li><span class="check">✓</span> A fully bespoke programme, updated regularly</li>
@@ -314,7 +303,6 @@
         </div>
       </div>
 
-      <!-- IN-PERSON SESSIONS -->
       <div class="service-block" style="margin-top:2rem;">
         <div class="service-header">
           <div>
@@ -323,21 +311,18 @@
           </div>
           <span class="service-tag">Cyprus</span>
         </div>
-        <p class="service-intro">
-          When I'm in Cyprus, I offer a dedicated in-person coaching session designed to take your progress to the next level. We'll start with a focused 30-minute review of your current progress, refining your programme and adjusting your nutrition plan to fit your evolving goals. Then, we'll spend 90 minutes in a personalised, hands-on coaching session — introducing new exercises, fine-tuning your form, and addressing any challenges. This is more than just a session — it's a strategic step in your coaching journey, available to all monthly clients during my visits.
-        </p>
+        <p class="service-intro">When I'm in Cyprus, I offer a dedicated in-person coaching session designed to take your progress to the next level. We'll start with a focused 30-minute review of your current progress, refining your programme and adjusting your nutrition plan to fit your evolving goals. Then, we'll spend 90 minutes in a personalised, hands-on coaching session — introducing new exercises, fine-tuning your form, and addressing any challenges.</p>
         <ul class="service-list">
           <li><span class="check">✓</span> 30-minute progress review and programme refinement</li>
           <li><span class="check">✓</span> Nutrition plan adjustment to fit your evolving goals</li>
           <li><span class="check">✓</span> 90-minute hands-on coaching session</li>
           <li><span class="check">✓</span> New exercises, form correction, and challenge troubleshooting</li>
-          <li><span class="check">✓</span> Book in advance — my Cyprus calendar fills up fast. Early booking is recommended to secure your slot before my seasonal visits begin.</li>
+          <li><span class="check">✓</span> Book in advance — my Cyprus calendar fills up fast</li>
         </ul>
         <div class="service-footer">
           <a href="#contact" class="btn-service">Check Availability</a>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -351,9 +336,7 @@
     <div class="wellbeing-inner">
       <p class="section-label">The Cyprus Life</p>
       <h2 class="section-title">Balance your work.<br>Strengthen your lifestyle.</h2>
-      <p class="section-body">
-        Cyprus offers something extraordinary — sun-soaked mornings, clean Mediterranean air, fresh local produce, and a pace of life that naturally supports recovery and wellbeing. Your environment is one of the most powerful tools you have. Let's use it.
-      </p>
+      <p class="section-body">Cyprus offers something extraordinary — sun-soaked mornings, clean Mediterranean air, fresh local produce, and a pace of life that naturally supports recovery and wellbeing. Your environment is one of the most powerful tools you have. Let's use it.</p>
       <div class="wellbeing-grid">
         <div class="wellbeing-card">
           <div class="wellbeing-icon">☀️</div>
@@ -363,7 +346,7 @@
         <div class="wellbeing-card">
           <div class="wellbeing-icon">🌿</div>
           <h3>Mediterranean Lifestyle Guidance</h3>
-          <p>As part of your coaching, I'll help guide your food choices and daily habits using fresh local produce, simple meals, and practical nutrition advice that supports your training, energy, and overall wellbeing.</p>
+          <p>As part of your coaching, I'll help guide your food choices and daily habits using fresh local produce, simple meals, and practical nutrition advice.</p>
         </div>
         <div class="wellbeing-card">
           <div class="wellbeing-icon">🌊</div>
@@ -384,22 +367,12 @@
     <div class="section-inner">
       <p class="section-label">Client Experiences</p>
       <h2 class="section-title">Real Coaching<br>Experiences.</h2>
-      <p class="section-body">
-        Over the years, I've worked with clients from different backgrounds and lifestyles — helping them build healthier routines, improve their fitness, increase their energy, and create a more balanced approach to wellbeing.
-      </p>
+      <p class="section-body">Over the years, I've worked with clients from different backgrounds and lifestyles — helping them build healthier routines, improve their fitness, increase their energy, and create a more balanced approach to wellbeing.</p>
       <div class="testimonials-grid">
-        <div class="testimonial">
-          <p>"Louise represents the PT gold standard — patient, understanding, and genuinely committed to your success."</p>
-        </div>
-        <div class="testimonial">
-          <p>"In three years, not one session has ever been the same. Creative, motivating, and always prepared."</p>
-        </div>
-        <div class="testimonial">
-          <p>"Louise adapts every session to your needs — no fixed programmes, no 'work through the pain'. Just smart, safe coaching."</p>
-        </div>
-        <div class="testimonial">
-          <p>"A truly human approach to training — the key to building long-term, sustainable success."</p>
-        </div>
+        <div class="testimonial"><p>"Louise represents the PT gold standard — patient, understanding, and genuinely committed to your success."</p></div>
+        <div class="testimonial"><p>"In three years, not one session has ever been the same. Creative, motivating, and always prepared."</p></div>
+        <div class="testimonial"><p>"Louise adapts every session to your needs — no fixed programmes, no 'work through the pain'. Just smart, safe coaching."</p></div>
+        <div class="testimonial"><p>"A truly human approach to training — the key to building long-term, sustainable success."</p></div>
       </div>
       <div class="stars">★★★★★</div>
       <br>
@@ -412,37 +385,81 @@
     <div style="max-width:620px; margin:0 auto;">
       <p class="section-label">Ready for your reset?</p>
       <h2 class="section-title">Book Your Free<br>Consultation.</h2>
-      <p class="cta-body">
-        Fill in your details below and I'll be in touch to arrange your free consultation — a relaxed, no-pressure chat about your goals and how we can work together.
-      </p>
+      <p class="cta-body">Fill in your details below and I'll be in touch to arrange your free consultation — a relaxed, no-pressure chat about your goals and how we can work together.</p>
       <div class="contact-form">
         <div class="form-group">
-          <label>Your Name</label>
-          <input type="text" placeholder="First and last name">
+          <label for="name">Your Name</label>
+          <input type="text" id="name" placeholder="First and last name">
         </div>
         <div class="form-group">
-          <label>Email Address</label>
-          <input type="email" placeholder="your@email.com">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" placeholder="your@email.com">
         </div>
         <div class="form-group">
-          <label>WhatsApp / Telephone Number</label>
-          <input type="tel" placeholder="+44 or international number">
+          <label for="phone">WhatsApp / Telephone Number</label>
+          <input type="tel" id="phone" placeholder="+44 or international number">
         </div>
-        <button class="btn-submit">Book Your Free Consultation</button>
+        <button class="btn-submit" id="submitBtn" onclick="submitForm()">Book Your Free Consultation</button>
+        <p class="form-message" id="formMessage"></p>
       </div>
       <div style="text-align:center; margin-top:1.5rem;">
-        <a href="[YOUR WHATSAPP LINK]" target="_blank" class="whatsapp-btn">
+        <a href="https://wa.me/447834483853" target="_blank" class="whatsapp-btn">
           💬 Message me on WhatsApp
         </a>
       </div>
-      <p class="fb-note">Drop me a message through my WhatsApp and I will get back to you within 24 hours. Louise is also active in several expat and solo traveller groups on Facebook — find her there or send a direct message anytime.</p>
+      <p class="fb-note">Drop me a message and I will get back to you within 24 hours. Louise is also active in several expat and solo traveller groups on Facebook — find her there or send a direct message anytime.</p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>© 2025 <span>Fitness Flow · Train with Louise</span>. All rights reserved.</p>
+    <p>© 2026 <span>Fitness Flow · Train with Louise</span>. All rights reserved.</p>
   </footer>
+
+  <script>
+    async function submitForm() {
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const phone = document.getElementById('phone').value.trim();
+      const btn = document.getElementById('submitBtn');
+      const msg = document.getElementById('formMessage');
+
+      if (!name || !email) {
+        msg.textContent = 'Please enter your name and email address.';
+        msg.className = 'form-message error';
+        return;
+      }
+
+      btn.disabled = true;
+      btn.textContent = 'Sending...';
+      msg.textContent = '';
+      msg.className = 'form-message';
+
+      try {
+        const res = await fetch('/.netlify/functions/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, phone })
+        });
+
+        if (res.ok) {
+          msg.textContent = '✓ Thank you! Louise will be in touch within 24 hours.';
+          msg.className = 'form-message success';
+          document.getElementById('name').value = '';
+          document.getElementById('email').value = '';
+          document.getElementById('phone').value = '';
+          btn.textContent = 'Message Sent!';
+        } else {
+          throw new Error('Server error');
+        }
+      } catch (e) {
+        msg.textContent = 'Something went wrong — please try WhatsApp or email directly.';
+        msg.className = 'form-message error';
+        btn.disabled = false;
+        btn.textContent = 'Book Your Free Consultation';
+      }
+    }
+  </script>
 
 </body>
 </html>
